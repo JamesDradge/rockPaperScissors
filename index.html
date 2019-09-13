@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+
+let computerChoice;
+let playerInput = prompt("Please enter Rock, Paper, or Scissors");
+
+    function computerPlay(){
+    let result = Math.floor(Math.random() * (3 - 1 + 1)) +1;
+    console.log(result);
+    if (result == 1){
+    computerChoice = "Rock";
+    } else if (result == 2){
+        computerChoice = "Paper";
+    } else {
+        computerChoice = "Scissors";
+    }
+    return computerChoice;
+    }
+
+    function playerPlay(input){
+    playerInput = playerInput.toLowerCase();
+    playerInput = playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
+    return input;
+    
+    }
+
+    function determineWinner(playerChoice, computerChoice){
+
+        console.log(computerChoice);
+        console.log(playerChoice);
+        
+       if (playerChoice == computerChoice){
+           alert("It's a Tie");
+       } else if (playerChoice == "Rock" && computerChoice == "Scissors"){
+           alert("You win!");
+       } else if (playerChoice == "Scissors" && computerChoice == "Paper"){
+           alert("You win!");
+       } else if (playerChoice == "Paper" && computerChoice == "Rock"){
+           alert("You win!");
+       }else if (playerChoice == "Rock" && computerChoice == "Paper"){
+           alert("You lose!");
+       } else if (playerChoice == "Scissors" && computerChoice == "Rock"){
+           alert("You lose!");
+       } else if (playerChoice == "Paper" && computerChoice == "Scissors"){
+           alert("You lose!");
+       } else {
+           alert("Error, please choose rock, paper, or scissors");
+       }
+    }
+
+computerPlay();
+playerPlay(playerInput);
+let playerChoice = playerInput;
+determineWinner(playerChoice, computerChoice);
+// console.log(computerChoice);
+// console.log(playerInput);
+
+</script>
+
+
+</html>
