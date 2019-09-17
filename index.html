@@ -5,6 +5,10 @@
 
 let computerChoice;
 let playerInput = prompt("Please enter Rock, Paper, or Scissors");
+playerPlay(playerInput);
+let playerChoice = playerInput;
+let playerScore = 0;
+let computerScore = 0;
 
     function computerPlay(){
     let result = Math.floor(Math.random() * (3 - 1 + 1)) +1;
@@ -28,32 +32,65 @@ let playerInput = prompt("Please enter Rock, Paper, or Scissors");
 
     function determineWinner(playerChoice, computerChoice){
 
-        console.log(computerChoice);
-        console.log(playerChoice);
+        console.log("The computer chose " + computerChoice);
+        console.log("You chose " + playerChoice);
         
        if (playerChoice == computerChoice){
-           alert("It's a Tie");
+           console.log("You both chose the same, it's a Tie");
+           return "tie";
        } else if (playerChoice == "Rock" && computerChoice == "Scissors"){
-           alert("You win!");
+        console.log("Rock Beats Scissors! You win!");
+           return "win";
        } else if (playerChoice == "Scissors" && computerChoice == "Paper"){
-           alert("You win!");
+        console.log("Scissors beats Paper! You win!");
+           return "win"
        } else if (playerChoice == "Paper" && computerChoice == "Rock"){
-           alert("You win!");
+        console.log("Paper beats Rock! You win!");
+           return "win"
        }else if (playerChoice == "Rock" && computerChoice == "Paper"){
-           alert("You lose!");
+        console.log("Paper beats Rock! You lose!");
+           return "lose"
        } else if (playerChoice == "Scissors" && computerChoice == "Rock"){
-           alert("You lose!");
+        console.log("Rock Beats Scissors! You lose!");
+           return "lose"
        } else if (playerChoice == "Paper" && computerChoice == "Scissors"){
-           alert("You lose!");
+        console.log("Scissors beats Paper! You lose!");
+           return "lose"
        } else {
            alert("Error, please choose rock, paper, or scissors");
+           return "bug"
        }
     }
 
-computerPlay();
-playerPlay(playerInput);
-let playerChoice = playerInput;
-determineWinner(playerChoice, computerChoice);
+    function game(){
+
+        //Get the player's choice
+        // playerInput = prompt("Please enter Rock, Paper, or Scissors");
+        playerPlay(playerInput);
+       
+
+        //Get the computer's choice
+        computerPlay();
+
+        //Get a winner
+        determineWinner(playerChoice, computerChoice);
+        
+        //Add to player or computer score
+        if (determineWinner(playerChoice, computerChoice) == "win"){
+            playerScore = playerScore++;
+            console.log(playerScore);
+        } else if (determineWinner(playerChoice, computerChoice) == "lose"){
+            computerScore = computerScore++;
+            console.log(computerScore);
+        }        
+    }
+
+    while (playerScore != 5 || computerScore != 5){
+        game();
+    }
+
+
+
 // console.log(computerChoice);
 // console.log(playerInput);
 
