@@ -3,6 +3,32 @@
 // assign number 1-3 to rock, paper, or scissors
 // return choice as computer selection
 
+let computerSelection;
+let computerChoice;
+
+computerPlay();
+
+function computerPlay(){
+    computerChoice = Math.floor((Math.random() * 3) + 1);
+
+
+        switch (computerChoice){
+            case 1:
+                computerChoice = "rock";
+                break;
+            case 2:
+                computerChoice = "paper";
+                break;
+            case 3:
+                computerChoice = "scissors";
+                break;
+            default:
+                console.log("An error has occured");
+        }
+        return computerChoice;
+}
+computerSelection = computerChoice;
+
 // playerPlay()
 // player prompt
 // validate typed option is rock, paper, or scissors,
