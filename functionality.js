@@ -1,11 +1,6 @@
-// computerPlay()
-// generates a random number between 1-3
-// assign number 1-3 to rock, paper, or scissors
-// return choice as computer selection
 
 let computerSelection;
 let computerChoice;
-
 function computerPlay(){
     computerChoice = Math.floor((Math.random() * 3) + 1);
         switch (computerChoice){
@@ -23,16 +18,8 @@ function computerPlay(){
         }
 }
 
-
-// playerPlay()
-// player prompt
-// regulate Casing
-// validate typed option is rock, paper, or scissors,
-// return player selection
-
 let playerInput;
 let playerSelection;
-
 function playerPlay(){
     playerInput = prompt("Please enter rock, paper, or scissors to play.");
     if (playerInput == null){
@@ -51,15 +38,7 @@ function playerPlay(){
     return playerSelection;
 }
 
-// determineWinner()
-// rock > scissors
-// paper > rock
-// scissors > paper
-// check each selection
-// return the Winner
-
 let winner;
-
 function getWinner(){
     switch (true) {
         case (computerSelection == "rock" && playerSelection == "rock"):
@@ -83,15 +62,9 @@ function getWinner(){
     }
     return winner;
 }
-// declare scores
-// tell the player the chosen inputs
-// console.log the winner
-// winner score increase
-// output scores
 
 let playerScore = 0;
 let computerScore = 0;
-
 function adjustScore(){
     switch (winner){
         case "none":
@@ -109,14 +82,6 @@ function adjustScore(){
     alert(`Your score is ${playerScore} and the computer's score is ${computerScore}`);
 }
 
-// Game()
-// UNTIL score == 5
-// computerPlay
-// playerPlay
-// determineWinner
-// declare winner variable (global)
-// set winner variable
-
 while (playerScore < 5 && computerScore < 5){
     computerPlay();
     playerPlay();
@@ -130,6 +95,3 @@ switch (true){
     case (computerScore == 5):
         alert("The computer won!");
 }
-
-
-// console log winner
