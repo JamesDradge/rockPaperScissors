@@ -10,8 +10,6 @@ computerPlay();
 
 function computerPlay(){
     computerChoice = Math.floor((Math.random() * 3) + 1);
-
-
         switch (computerChoice){
             case 1:
                 computerChoice = "rock";
@@ -31,9 +29,33 @@ computerSelection = computerChoice;
 
 // playerPlay()
 // player prompt
-// validate typed option is rock, paper, or scissors,
 // regulate Casing
+// validate typed option is rock, paper, or scissors,
 // return player selection
+
+let playerInput;
+let playerSelection;
+
+playerPlay();
+
+function playerPlay(){
+    playerInput = prompt("Please enter rock, paper, or scissors to play.");
+    if (playerInput == null){
+        return;
+    }
+    playerSelection = playerInput.toLowerCase();
+    switch (playerSelection){
+        case "rock":
+        case "paper":
+        case "scissors":
+            break;
+        default:
+            alert("Please ensure your input is 'rock', 'paper', or 'scissors'.");
+            playerPlay();
+    }
+    return playerSelection;
+}
+
 
 // determineWinner()
 // rock > scissors
@@ -42,6 +64,7 @@ computerSelection = computerChoice;
 // check each selection
 // return the Winner
 
+// tell the player the chosen inputs
 // console.log the winner
 // declare scores
 // winner score increase
