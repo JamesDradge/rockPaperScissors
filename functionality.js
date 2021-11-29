@@ -1,3 +1,22 @@
+game();
+
+function game(){
+    while (playerScore < 5 && computerScore < 5){
+        computerPlay();
+        playerPlay();
+        getWinner();
+        adjustScore();
+    }
+
+    switch (true){
+        case (playerScore == 5):
+            alert("You won!");
+            break;
+        case (computerScore == 5):
+            alert("The computer won!");
+            break;
+    }
+}
 
 let computerSelection;
 let computerChoice;
@@ -80,24 +99,4 @@ function adjustScore(){
             break;
     }
     alert(`Your score is ${playerScore} and the computer's score is ${computerScore}`);
-}
-
-game();
-
-function game(){
-    while (playerScore < 5 && computerScore < 5){
-        computerPlay();
-        playerPlay();
-        getWinner();
-        adjustScore();
-    }
-
-    switch (true){
-        case (playerScore == 5):
-            alert("You won!");
-            break;
-        case (computerScore == 5):
-            alert("The computer won!");
-            break;
-    }
 }
