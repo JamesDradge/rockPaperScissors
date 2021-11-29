@@ -90,12 +90,34 @@ function getWinner(){
     }
     return winner;
 }
-
+console.log(winner);
+// declare scores
 // tell the player the chosen inputs
 // console.log the winner
 // winner score increase
-// declare scores
+// output scores
 
+let playerScore = 0;
+let computerScore = 0;
+
+adjustScore();
+
+function adjustScore(){
+    switch (winner){
+        case "none":
+            break;
+        case "computer":
+            computerScore++;
+            break;
+        case "player":
+            playerScore++;
+            break;
+        default:
+            console.log("An error has occured");
+            break;
+    }
+    alert(`Your score is ${playerScore} and the computer's score is ${computerScore}`);
+}
 
 // Game()
 // UNTIL score == 5
