@@ -6,26 +6,23 @@
 let computerSelection;
 let computerChoice;
 
-computerPlay();
-
 function computerPlay(){
     computerChoice = Math.floor((Math.random() * 3) + 1);
         switch (computerChoice){
             case 1:
-                computerChoice = "rock";
+                computerSelection = "rock";
                 break;
             case 2:
-                computerChoice = "paper";
+                computerSelection = "paper";
                 break;
             case 3:
-                computerChoice = "scissors";
+                computerSelection = "scissors";
                 break;
             default:
                 console.log("An error has occured");
         }
-        return computerChoice;
 }
-computerSelection = computerChoice;
+
 
 // playerPlay()
 // player prompt
@@ -36,12 +33,10 @@ computerSelection = computerChoice;
 let playerInput;
 let playerSelection;
 
-playerPlay();
-
 function playerPlay(){
     playerInput = prompt("Please enter rock, paper, or scissors to play.");
     if (playerInput == null){
-        return;
+        playerPlay();
     }
     playerSelection = playerInput.toLowerCase();
     switch (playerSelection){
@@ -64,8 +59,6 @@ function playerPlay(){
 // return the Winner
 
 let winner;
-
-getWinner();
 
 function getWinner(){
     switch (true) {
@@ -90,7 +83,6 @@ function getWinner(){
     }
     return winner;
 }
-console.log(winner);
 // declare scores
 // tell the player the chosen inputs
 // console.log the winner
@@ -99,8 +91,6 @@ console.log(winner);
 
 let playerScore = 0;
 let computerScore = 0;
-
-adjustScore();
 
 function adjustScore(){
     switch (winner){
@@ -126,6 +116,20 @@ function adjustScore(){
 // determineWinner
 // declare winner variable (global)
 // set winner variable
+
+while (playerScore < 5 && computerScore < 5){
+    computerPlay();
+    playerPlay();
+    getWinner();
+    adjustScore();
+}
+
+switch (true){
+    case (playerScore == 5):
+        alert("You won!");
+    case (computerScore == 5):
+        alert("The computer won!");
+}
 
 
 // console log winner
