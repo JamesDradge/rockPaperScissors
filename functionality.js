@@ -56,7 +56,6 @@ function playerPlay(){
     return playerSelection;
 }
 
-
 // determineWinner()
 // rock > scissors
 // paper > rock
@@ -64,10 +63,39 @@ function playerPlay(){
 // check each selection
 // return the Winner
 
+let winner;
+
+getWinner();
+
+function getWinner(){
+    switch (true) {
+        case (computerSelection == "rock" && playerSelection == "rock"):
+        case (computerSelection == "paper" && playerSelection == "paper"):
+        case (computerSelection == "scissors" && playerSelection == "scissors"):
+            alert("The round was a draw!"); 
+            winner = "none";
+            break;   
+        case (computerSelection == "rock" && playerSelection == "scissors"):
+        case (computerSelection == "paper" && playerSelection == "rock"):
+        case (computerSelection == "scissors" && playerSelection == "paper"):
+            alert("The computer won this round!")
+            winner = "computer";
+            break;
+        case (computerSelection == "rock" && playerSelection == "paper"):
+        case (computerSelection == "paper" && playerSelection == "scissors"):
+        case (computerSelection == "scissors" && playerSelection == "rock"):
+            alert("You won this round!")
+            winner = "player";
+            break;
+    }
+    return winner;
+}
+
 // tell the player the chosen inputs
 // console.log the winner
-// declare scores
 // winner score increase
+// declare scores
+
 
 // Game()
 // UNTIL score == 5
