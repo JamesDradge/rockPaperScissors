@@ -23,12 +23,19 @@ function game(){
 
     switch (true){
         case (playerScore == 5):
-            console.log("You won!...restarting");
+            const winnerOutput = document.createElement('p');
+            winnerOutput.textContent = "You won!...restarting";
+            results.appendChild(winnerOutput);
+            results.innerHTML = '';
             playerScore = 0;
             computerScore = 0;
             break;
         case (computerScore == 5):
             console.log("The computer won!...restarting");
+            const loserOutput = document.createElement('p');
+            loserOutput.textContent = "The computer won!...restarting";
+            results.appendChild(loserOutput);
+            results.innerHTML = '';
             playerScore = 0;
             computerScore = 0;
             break;
@@ -126,5 +133,7 @@ function adjustScore(){
             console.log("An error has occured");
             break;
     }
-    console.log(`Your score is ${playerScore} and the computer's score is ${computerScore}`);
+    const scores = document.createElement('p');
+    scores.textContent = `Your score is ${playerScore} and the computer's score is ${computerScore}`;
+    results.appendChild(scores);
 }
