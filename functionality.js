@@ -1,12 +1,20 @@
-buttons = document.querySelectorAll('.btn');
+
+//Checks for user selection and starts game
+const buttons = document.querySelectorAll('.btn');
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         playerSelection = e.target.outerText;
-        console.log(playerSelection);
-    });
+    }, game);
     button.addEventListener('click', game);
 });
 
+//Create results div
+const body = document.querySelector('body');
+const results = document.createElement('div');
+results.setAttribute('style', 'min-height: 100px; border: black 10px solid;');
+body.appendChild(results);
+
+//Keeps track of the game and runs game related functions
 function game(){
         computerPlay();
         playerPlay();
@@ -27,6 +35,8 @@ function game(){
     }
 }
 
+
+//Gets the computer's choice for the round
 let computerSelection;
 let computerChoice;
 function computerPlay(){
@@ -34,68 +44,72 @@ function computerPlay(){
         switch (computerChoice){
             case 1:
                 computerSelection = "rock";
-                console.log(computerSelection);
                 break;
             case 2:
                 computerSelection = "paper";
-                console.log(computerSelection);
                 break;
             case 3:
                 computerSelection = "scissors";
-                console.log(computerSelection);
                 break;
             default:
                 console.log("An error has occured");
         }
+        const computerChoiceOutput = document.createElement('p');
+        computerChoiceOutput.textContent = `The computer chose ${computerSelection}`;
+        results.appendChild(computerChoiceOutput);
 }
 
-let playerInput;
+// Normalises casing of player selection
 let playerSelection;
 function playerPlay(){
-    // playerInput = prompt("Please enter rock, paper, or scissors to play.");
-    // if (playerInput == null){
-    //     playerPlay();
-    // }
+
     playerSelection = playerSelection.toLowerCase();
     switch (playerSelection){
         case "rock":
         case "paper":
         case "scissors":
+            const playerChoiceOutput = document.createElement('p');
+            playerChoiceOutput.textContent = `You chose ${playerSelection}`;
+            results.appendChild(playerChoiceOutput);
             break;
-        default:
-            console.log("Please ensure your input is 'rock', 'paper', or 'scissors'.");
-            playerPlay();
     }
     return playerSelection;
-
-
 }
 
+//Determines a winner
 let winner;
 function getWinner(){
     switch (true) {
         case (computerSelection == "rock" && playerSelection == "rock"):
         case (computerSelection == "paper" && playerSelection == "paper"):
         case (computerSelection == "scissors" && playerSelection == "scissors"):
-            console.log("The round was a draw!"); 
+            const drawOutput = document.createElement('p');
+            drawOutput.textContent = "The round was a draw!";
+            results.appendChild(drawOutput);
             winner = "none";
             break;   
         case (computerSelection == "rock" && playerSelection == "scissors"):
         case (computerSelection == "paper" && playerSelection == "rock"):
         case (computerSelection == "scissors" && playerSelection == "paper"):
-            console.log("The computer won this round!")
+            const loseOutput = document.createElement('p');
+            loseOutput.textContent = "The computer won this round!";
+            results.appendChild(loseOutput);
             winner = "computer";
             break;
         case (computerSelection == "rock" && playerSelection == "paper"):
         case (computerSelection == "paper" && playerSelection == "scissors"):
         case (computerSelection == "scissors" && playerSelection == "rock"):
-            console.log("You won this round!")
+            const winOutput = document.createElement('p');
+            winOutput.textContent = "You won this round!";
+            results.appendChild(winOutput);
             winner = "player";
             break;
     }
     return winner;
 }
 
+
+//Tracks player and computer scores
 let playerScore = 0;
 let computerScore = 0;
 function adjustScore(){
@@ -114,5 +128,3 @@ function adjustScore(){
     }
     console.log(`Your score is ${playerScore} and the computer's score is ${computerScore}`);
 }
-
-// game();
