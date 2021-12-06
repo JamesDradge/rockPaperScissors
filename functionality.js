@@ -12,6 +12,7 @@ buttons.forEach((button) => {
 const body = document.querySelector('body');
 const results = document.createElement('div');
 results.setAttribute('style', 'min-height: 100px; border: black 10px solid;');
+results.classList.add("results");
 body.appendChild(results);
 
 //Keeps track of the game and runs game related functions
